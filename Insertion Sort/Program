@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+void delay(){
+    int temp;
+    for(int i=0;i<500;i++)
+         temp=3000/13;
+}
+
+void insertionSort(int a[],int n){
+    int i;
+    for(i=1;i<n;i++){
+        int key=a[i];
+        int j=i-1;
+        while(j>=0 && a[j]>key){
+            delay();
+            a[j+1]=a[j];
+            j--;
+        }
+        a[j+1]=key;
+    }
+}
+
+int main(){
+    clock_t start,end;
+    int n=5000;
+    int arr[n];
+    for(int i=0;i<n;i++)
+        arr[i]=n-i;
+    start=clock();
+    insertionSort(arr,n);
+    end=clock();
+    printf("Time taken=%f",(double)(end-start)/CLOCKS_PER_SEC);
+}
+1000	0.400086
+2000	1.620606
+3000	3.674011
+4000	6.49893
+5000	10.22278

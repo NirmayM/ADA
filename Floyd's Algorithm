@@ -1,0 +1,28 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void main(){
+printf("Enter number of vertices:");
+int n;
+scanf("%d",&n);
+printf("Enter weighted matrix:");
+int a[n][n];
+int i,j;
+for(i=0;i<n;i++){
+    for(j=0;j<n;j++)
+    scanf("%d",&a[i][j]);
+}
+int k=0;
+for(k=0;k<n;k++){
+    for(i=0;i<n;i++){
+        for(j=0;j<n;j++)
+        if(a[i][k]+a[k][j]<a[i][j])
+            a[i][j]=a[i][k]+a[k][j];
+    }
+}
+for(i=0;i<n;i++){
+    for(j=0;j<n;j++)
+    printf("%d\t",a[i][j]);
+    printf("\n");
+}
+}

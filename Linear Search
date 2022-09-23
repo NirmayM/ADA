@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+void delay(){
+    int i,n;
+    for(i=0;i<5000;i++)
+        n=3000/13;
+}
+int linearSearch(int a[],int n,int key){
+    delay();
+    int indx;
+    n--;
+    if(n>=0){
+        if(a[n]==key)
+            return n;
+        else{
+            indx=linearSearch(a,n,key);
+        }
+    }
+    else return -1;
+    return indx;
+}
+
+void main(){
+    clock_t start,end;
+    int n=2000;
+    int arr[n];
+    for(int i=0;i<n;i++)
+        arr[i]=n-i;
+    int key;
+    printf("Enter key:");
+    scanf("%d",&key);
+    start=clock();
+    int idx=linearSearch(arr,n,key);
+    end=clock();
+    if(idx!=-1)
+        printf("Element found at index %d",idx);
+    else
+        printf("Element not found");
+    printf("\nTime=%f",(double)(end-start)/CLOCKS_PER_SEC);
+}
